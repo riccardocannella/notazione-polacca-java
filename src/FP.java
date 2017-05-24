@@ -8,13 +8,26 @@ public class FP {
 
 	public static void main(String[] args) {
 		String percorso = System.getProperty("user.home") + "/Desktop/expression.txt";
+		System.out.println("Scrivo il file di testo in " + percorso);
 		new FP(percorso);
+		System.out.println("Fine scrittura");
+		System.out.println("---------------------------------");
 		double res = 0;
 		// calcolo ricorsivo
 		System.out.println("Inizio del calcolo in maniera ricorsiva.");
 		try{
 		res = new CalcoloNPRicorsivo(percorso).calcoloRicorsivo();
 		} catch (Exception e){
+			System.err.println(e.getMessage());
+		}
+		System.out.println("Risultato: " + res);
+		System.out.println("---------------------------------");
+		res = 0;
+		// calcolo multithread
+		System.out.println("Inizio del calcolo con i thread.");
+		try {
+			res = new CalcoloNPThread(percorso).calcoloConThread();
+		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
 		System.out.println("Risultato: " + res);
