@@ -9,6 +9,16 @@ public class FP {
 	public static void main(String[] args) {
 		String percorso = System.getProperty("user.home") + "/Desktop/expression.txt";
 		new FP(percorso);
+		double res = 0;
+		// calcolo ricorsivo
+		System.out.println("Inizio del calcolo in maniera ricorsiva.");
+		try{
+		res = new CalcoloNPRicorsivo(percorso).calcoloRicorsivo();
+		} catch (Exception e){
+			System.err.println(e.getMessage());
+		}
+		System.out.println("Risultato: " + res);
+		
 		System.out.println("Fine");
 	}
 
