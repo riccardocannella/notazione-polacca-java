@@ -1,6 +1,10 @@
 import java.util.*;
 import java.io.*;
-
+/**
+ * 
+ * @author Riccardo Cannella & Corrado Petrelli
+ *
+ */
 public class FP {
 	private Random r;
 	private FileWriter out;
@@ -37,7 +41,11 @@ public class FP {
 		System.out.println("Fine");
 	}
 
-	FP(String percorso) {
+	/**
+	 * Costruttore per generare il file
+	 * @param percorso Percorso del file
+	 */
+	public FP(String percorso) {
 		r = new Random();
 		String e;
 		StringTokenizer st;
@@ -53,6 +61,9 @@ public class FP {
 		}
 	}
 
+	/*
+	 * Metodo ricorsivo che genera la stringa dell'espressione
+	 */
 	private String go(int n) {
 		if (n > 0) {
 			switch (r.nextInt(3)) {
