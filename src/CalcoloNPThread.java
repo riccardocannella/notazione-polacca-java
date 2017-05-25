@@ -7,15 +7,19 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class CalcoloNPThread {
+	
 	private Scanner s;
-	// mappa che rappresenterà un albero binario:
-	// il figlio sx avrà indice 2*indiceRadice+1
-	// il figlio dx avrà indice 2*indiceRadice+2
-	// è utile per poi creare i thread
+	/**
+	 * Mappa che rappresenterà un albero binario:
+	 * 		il figlio sx avrà indice 2*indiceRadice+1
+	 * 		il figlio dx avrà indice 2*indiceRadice+2
+	 * è utile per poi creare i thread
+	 */
 	private HashMap<Integer, Object> albero;
 	
 	/**
-	 * @param percorso
+	 * Costruttore
+	 * @param percorso Percorso dell'espressione
 	 * @throws IOException
 	 */
 	public CalcoloNPThread(String percorso) throws IOException{
@@ -25,17 +29,19 @@ public class CalcoloNPThread {
 	
 
 	/**
-	 * @param percorso
-	 * @return
+	 * Calcolo dell'esecuzione del Thread
+	 * @param percorso Percorso dell'esecuzione
+	 * @return Risultato del thread
 	 * @throws IOException
 	 */
 	public double calcoloConThread() throws IOException {
 		long start = System.currentTimeMillis();
-		double res = calcolaThreadPrivato();
+		double res = this.calcolaThreadPrivato();
 		long end = System.currentTimeMillis();
 		System.out.println("Calcolo in multithreading eseguito in " + (end - start) + " millisecondi totali.");
 		return res;
 	}
+	
 	/**
 	 * @param percorso
 	 * @return
@@ -50,6 +56,7 @@ public class CalcoloNPThread {
 	}
 
 	/**
+	 * 
 	 * @return
 	 */
 	private double calcolaThreadPrivato() {

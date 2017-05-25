@@ -6,7 +6,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 /**
- * @author Riccardo Cannella
+ * @author Riccardo Cannella & Petrelli Corrado
  *
  */
 public class CalcoloNPRicorsivo {
