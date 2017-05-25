@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  */
 public class CalcoloNPRicorsivo {
-	private Scanner s;
+	private Scanner scanner;
 	
 	/**
 	 * Costruttore della classe
@@ -19,9 +19,9 @@ public class CalcoloNPRicorsivo {
 	 */
 	public CalcoloNPRicorsivo(String percorso) throws IOException{
 		//Scannerizza l'espressione presente nel file nel percorso passato come parametro
-		s = new Scanner(leggiEspressione(percorso));
+		scanner = new Scanner(leggiEspressione(percorso));
 		//Setta la lingua locale cosicchè non ci siano problemi con il carattere '.'
-		s.useLocale(new Locale("en", "us"));
+		scanner.useLocale(new Locale("en", "us"));
 	}
 	
 	/**
@@ -35,8 +35,7 @@ public class CalcoloNPRicorsivo {
 		File f = new File(percorso);
 		if (!f.exists() || f.isDirectory())
 			throw new IOException("Il percorso per il file dell'espressione non è valido");
-		String expr = new String(Files.readAllBytes(Paths.get(percorso)));
-		return expr;
+		return new String(Files.readAllBytes(Paths.get(percorso)));
 	}
 	
 	/**
@@ -46,19 +45,17 @@ public class CalcoloNPRicorsivo {
 	 */
 	public double calcoloRicorsivo() throws Exception {
 		// se il primo token è un numero non va bene
-		if (s.hasNextDouble())
+		if (scanner.hasNextDouble())
 			throw new Exception("La stringa non può iniziare con un numero!");
 		long start = System.currentTimeMillis();
 		double res = calcolaRec();
 		long end = System.currentTimeMillis();
 		System.out.println("Calcolo eseguito in " + (end - start) + " millisecondi.");
-		s.close();
+		scanner.close();
 		//libera la ram
-		s = null;
+		scanner = null;
 		return res;
 	}
-
-	
 
 	/**
 	 * Meotodo ricorsivo che esegue i calcoli
@@ -66,7 +63,7 @@ public class CalcoloNPRicorsivo {
 	 * @throws Exception
 	 */
 	private double calcolaRec() throws Exception {
-		String next = s.next();
+		String next = scanner.next();
 		if (next.equals("-"))
 			return calcolaRec() - calcolaRec();
 		else if (next.equals("+"))

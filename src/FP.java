@@ -22,7 +22,10 @@ public class FP {
 		System.out.println("Fine scrittura");
 		System.out.println("---------------------------------");
 		double risultato = 0;
-		// calcolo ricorsivo
+		
+		// #####################
+		// # calcolo ricorsivo #
+		// #####################
 		System.out.println("Inizio del calcolo in maniera ricorsiva.");
 		try {
 			risultato = new CalcoloNPRicorsivo(percorso).calcoloRicorsivo();
@@ -32,7 +35,10 @@ public class FP {
 		System.out.println("Risultato: " + risultato);
 		System.out.println("---------------------------------");
 		risultato = 0;
-		// calcolo multithread
+		
+		// #######################
+		// # calcolo multithread #
+		// #######################
 		System.out.println("Inizio del calcolo con i thread.");
 		try {
 			risultato = new CalcoloNPThread(percorso).calcoloConThread();
