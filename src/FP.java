@@ -8,6 +8,9 @@ import java.io.*;
 public class FP {
 	private Random r;
 	private FileWriter out;
+	/**
+	 * Profondità dell'albero
+	 */
 	private final int DEPTH = 22;
 
 	public static void main(String[] args) {
@@ -54,6 +57,7 @@ public class FP {
 			st = new StringTokenizer(e);
 			while (st.hasMoreTokens())
 				out.write(" " + st.nextToken());
+			out.flush();
 			out.close();
 		} catch (Exception f) {
 			System.exit(1);
@@ -74,10 +78,11 @@ public class FP {
 				return "* " + go(n - 1) + " " + go(n - 1);
 			case 3:
 				return "/ " + go(n - 1) + " " + go(n - 1);
+			default: 
+				return "";
 			}
 		} else {
 			return " " + r.nextDouble();
 		}
-		return "";
 	}
 }
