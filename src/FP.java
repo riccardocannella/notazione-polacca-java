@@ -37,7 +37,6 @@ public class FP {
 			System.err.println(e.getMessage());
 		}
 		System.out.println("Risultato: " + risultato);
-
 		System.out.println("Fine");
 	}
 
