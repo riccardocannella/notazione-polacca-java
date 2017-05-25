@@ -1,1 +1,3 @@
-notazione-polacca-java
+#Risolutore Notazione Polacca inversa
+	- Ricorsiva
+	- MultiThreading
