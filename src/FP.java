@@ -7,31 +7,33 @@ public class FP {
 	private final int DEPTH = 22;
 
 	public static void main(String[] args) {
+		// Stabilisci percorso assoluto del file dell'espressione
 		String percorso = System.getProperty("user.home") + "/Desktop/expression.txt";
 		System.out.println("Scrivo il file di testo in " + percorso);
+		// Genera il file
 		new FP(percorso);
 		System.out.println("Fine scrittura");
 		System.out.println("---------------------------------");
-		double res = 0;
+		double risultato = 0;
 		// calcolo ricorsivo
 		System.out.println("Inizio del calcolo in maniera ricorsiva.");
-		try{
-		res = new CalcoloNPRicorsivo(percorso).calcoloRicorsivo();
-		} catch (Exception e){
-			System.err.println(e.getMessage());
-		}
-		System.out.println("Risultato: " + res);
-		System.out.println("---------------------------------");
-		res = 0;
-		// calcolo multithread
-		System.out.println("Inizio del calcolo con i thread.");
 		try {
-			res = new CalcoloNPThread(percorso).calcoloConThread();
+			risultato = new CalcoloNPRicorsivo(percorso).calcoloRicorsivo();
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
-		System.out.println("Risultato: " + res);
-		
+		System.out.println("Risultato: " + risultato);
+		System.out.println("---------------------------------");
+		risultato = 0;
+		// calcolo multithread
+		System.out.println("Inizio del calcolo con i thread.");
+		try {
+			risultato = new CalcoloNPThread(percorso).calcoloConThread();
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		System.out.println("Risultato: " + risultato);
+
 		System.out.println("Fine");
 	}
 
@@ -63,9 +65,9 @@ public class FP {
 			case 3:
 				return "/ " + go(n - 1) + " " + go(n - 1);
 			}
-		} else{
+		} else {
 			return " " + r.nextDouble();
-			}
+		}
 		return "";
 	}
 }
