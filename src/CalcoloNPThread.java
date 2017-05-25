@@ -73,7 +73,7 @@ public class CalcoloNPThread {
 	 */
 	private double calcolaThreadPrivato() {
 		System.out.println("Inizio creazione dell'albero.");
-		albero = new HashMap<Integer, Object>(10000000);
+		albero = new HashMap<Integer, Object>(8500000); // con DEPTH==22 questo valore è sufficiente
 		long startAlbero = System.currentTimeMillis();
 		costruisciAlbero(0);
 		long fineAlbero = System.currentTimeMillis();
@@ -82,7 +82,7 @@ public class CalcoloNPThread {
 		System.out.println("Albero costruito in " + (fineAlbero - startAlbero) + " millisecondi.");
 		// a questo punto devo iniziare a eseguire tutti i calcoli che sono già
 		// possibili per poi andare mano a mano a consumare tutto l'albero
-
+		
 		// che tipo di struttura? una coda?
 		return 0.0;
 	}
@@ -92,34 +92,24 @@ public class CalcoloNPThread {
 	 * 
 	 * @param indice
 	 */
-	private void costruisciAlbero(int indice) {
-		// flag che controlla se il figlio sinistro è un numero
-		boolean ilFiglioSxEUnNumero = false;
+	private void costruisciAlbero(int indice) {		
 		// se sono qui sicuramente il prossimo token è un segno
 		// inserisco l'indice come chiave e leggo il segno
-		albero.put(new Integer(indice), scanner.next());
+		albero.put(indice, scanner.next());
 
 		// CONTROLLI
 		// se il prossimo token è un numero, lo metto all'indice 2*indice+1
 		// (decisione: il numero subito dopo il segno diventa figlio sinistro)
 		if (scanner.hasNextDouble()) {
 			albero.put(2 * indice + 1, scanner.nextDouble());
-			ilFiglioSxEUnNumero = true;
 		}
 		// (ho un altro segno) inizio col prossimo sottoalbero, andando a sx
 		else {
-			costruisciAlbero((2 * indice) + 1);
+			costruisciAlbero(2 * indice + 1);
 		}
-
 		// Stessa identica cosa per il figlio destro
 		if (scanner.hasNextDouble()) {
 			albero.put(2 * indice + 2, scanner.nextDouble());
-			if (ilFiglioSxEUnNumero) {
-				// aggiungo questo mini albero a quelli computabili
-				// immediatamente dato che entrambi i figli sono numeri
-				// TODO QUI BISOGNA RUNNARE IL THREAD
-				// la struttura va usata qui e nel metodo che genererà i thread
-			}
 		} else {
 			// Ho trovato ancora un altro segno
 			costruisciAlbero(2 * indice + 2);

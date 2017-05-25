@@ -66,7 +66,6 @@ public class NPThread implements Callable<Double> {
 			return operando1 + operando2;
 		case '*':
 			return operando1 * operando2;
-		// ci fidiamo di operando2? potrebbe essere 0...
 		case '/':
 			return operando1 / operando2;
 		default:
