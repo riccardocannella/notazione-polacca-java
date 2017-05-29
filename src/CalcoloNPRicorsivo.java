@@ -33,8 +33,10 @@ public class CalcoloNPRicorsivo {
 	 */
 	private String leggiEspressione(String percorso) throws IOException {
 		File f = new File(percorso);
+		//Se il file non esiste o è una directory
 		if (!f.exists() || f.isDirectory())
 			throw new IOException("Il percorso per il file dell'espressione non è valido");
+		//Restituisci tutte l'espressione
 		return new String(Files.readAllBytes(Paths.get(percorso)));
 	}
 	
