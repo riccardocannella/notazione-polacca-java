@@ -25,7 +25,7 @@ public class CalcoloNPRicorsivo {
 	}
 	
 	/**
-	 * Legge l'espressione in un determinato percorso (se esiste) e restituisci
+	 * Legge l'espressione in un determinato percorso (se esiste) e restituisce
 	 * la stringa dell'espressione
 	 * @param percorso Percorso del file
 	 * @return Espressione

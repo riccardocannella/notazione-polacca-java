@@ -41,12 +41,12 @@ public class FP {
 		// #######################
 		System.out.println("Inizio del calcolo con i thread.");
 		try {
-			risultato = new CalcoloNPThread(percorso).calcoloConThread();
+			CalcoloNPThread p = new CalcoloNPThread(percorso);
+			System.out.println("Fine");
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
-		System.out.println("Risultato: " + risultato);
-		System.out.println("Fine");
+		System.exit(0);
 	}
 
 	/**
