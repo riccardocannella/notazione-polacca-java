@@ -15,7 +15,8 @@ public class FP {
 
 	public static void main(String[] args) {
 		// Stabilisci percorso assoluto del file dell'espressione
-		String percorso = System.getProperty("user.home") + "/Desktop/expression.txt";
+		String separatore = System.getProperty("file.separator");
+		String percorso = System.getProperty("user.home") + separatore + "Desktop" + separatore + "expression.txt";
 		System.out.println("Scrivo il file di testo in " + percorso);
 		// Genera il file
 		new FP(percorso);
@@ -41,7 +42,7 @@ public class FP {
 		// #######################
 		System.out.println("Inizio del calcolo con i thread.");
 		try {
-			CalcoloNPThread p = new CalcoloNPThread(percorso);
+			new CalcoloNPThread(percorso);
 			System.out.println("Fine");
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
